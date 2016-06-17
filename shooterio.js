@@ -128,7 +128,7 @@ class SnifferMan extends Jiki{
   }
 }
 
-
+/*
 class Alice extends SnifferMan{
   constructor(name,vx,vy,col){
   super(name,vx,vy,col);
@@ -146,7 +146,7 @@ class Alice extends SnifferMan{
 var alice = new Alice();
 const aliceID = 160603;
 players[aliceID] = alice;
-
+*/
 
 class Bob extends SnifferMan{
   constructor(name,vx,vy,col){

@@ -1,0 +1,117 @@
+
+<!doctype html>
+
+<title>CodeMirror: HTML5 preview</title>
+<meta charset="utf-8"/>
+
+<link rel=stylesheet href=./codemirror.css>
+<script src=./codemirror.js></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+<style type=text/css>
+      iframe {
+        position:absolute;
+        text-align:left;
+        top:9px;
+        left:-1px;
+        border:1px solid #AAAAAA;
+        background:#CFD5DA;
+        width:640px;height:360px;
+        overflow:hidden;
+        font-family:Verdana,sans-serif;
+        font-size:10pt;
+        /*
+        width: 49%;
+        float: left;
+        height: 300px;
+        border: 1px solid black;
+        border-left: 0px;
+      */
+      }
+      .CodeMirror {
+        position:absolute;
+        text-align:left;
+        border:1px solid #AAAAAA;
+        background:#EEF2F5;
+        color:black;
+        top:9px;
+        left:640px;
+        right:-1px;
+        height:360px;
+        font-family:Verdana,sans-serif;
+        font-size:10pt;
+        overflow:auto;
+        overflow-y:scroll;
+        /*
+        float: left;
+        width: 50%;
+        border: 1px solid black;
+      */
+    }
+    </style>
+
+<iframe id=preview></iframe>
+
+<article>
+<h2>HTML5 preview</h2>
+
+<!--
+=============================================================================-->
+    <textarea id=code name=code>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>danmaku</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="shooterio.js"></script>
+  <style type="text/css">
+    canvas { border: 1px solid #999;}
+  </style>
+</head>
+
+<body onload="init();">
+  <div class="">
+    参考<a href="http://yoppa.org/taumedia10/2065.html">HTML 5 canvas要素 + Javascriptで作る、動的コンテンツ</a>
+  </div>
+  <div class="">
+    <canvas id="danmakuio" width="640" height="480"></canvas>
+  </div>
+  <div class="console">
+    console
+  </div>
+  <div class="">
+    <button type="button" name="button" id="start">start</button>
+    <button type="button" name="button" id="stop">stop</button>
+  </div>
+  <script type="text/javascript">
+
+
+  </script>
+</body>
+</html>
+    </textarea>
+<!--
+=============================================================================-->
+
+    <script>
+      var delay;
+      // Initialize CodeMirror editor with a nice html5 canvas demo.
+      var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+        mode: 'text/html'
+      });
+      editor.on("change", function() {
+        clearTimeout(delay);
+        delay = setTimeout(updatePreview, 300);
+      });
+
+      function updatePreview() {
+        var previewFrame = document.getElementById('preview');
+        var preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
+        preview.open();
+        preview.write(editor.getValue());
+        preview.close();
+      }
+      setTimeout(updatePreview, 300);
+    </script>
+  </article>
