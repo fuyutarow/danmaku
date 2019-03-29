@@ -177,14 +177,16 @@ function init() {
     step = 0;
     ctx = canvas.getContext('2d');
     game = new Game();
-    $(function(){
-      $('#start').click(function(){
-        game.startTimer();
-      })
-      $('#stop').click(function(){
-        game.stopTimer();
-      })
-    })
+    game.startTimer();
+
+    // $(function(){
+    //   $('#start').click(function(){
+    //     game.startTimer();
+    //   })
+    //   $('#stop').click(function(){
+    //     game.stopTimer();
+    //   })
+    // })
 
   }
 }
